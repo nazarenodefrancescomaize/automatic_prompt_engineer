@@ -11,7 +11,8 @@ gpt_costs_per_thousand = {
     'davinci': 0.0200,
     'curie': 0.0020,
     'babbage': 0.0005,
-    'ada': 0.0004
+    'ada': 0.0004,
+    '3.5': 0.0015
 }
 
 
@@ -200,7 +201,7 @@ class GPT_Forward(LLM):
                 assert upper_index - 1 < len(text[i])
         config = self.config['gpt_config'].copy()
         config['logprobs'] = 1
-        config['echo'] = True
+        config['echo'] = False
         config['max_tokens'] = 0
         if isinstance(text, list):
             text = [f'\n{text[i]}' for i in range(len(text))]
